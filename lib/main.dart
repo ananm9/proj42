@@ -4,9 +4,14 @@ import 'package:proj42/widget/newTransaction.dart';
 
 void main() => runApp(MaterialApp(home: RootWidget()));
 
-class RootWidget extends StatelessWidget {
+class RootWidget extends StatefulWidget {
   const RootWidget({Key? key}) : super(key: key);
 
+  @override
+  State<RootWidget> createState() => _RootWidgetState();
+}
+
+class _RootWidgetState extends State<RootWidget> {
   void addNewTansactionSheet(BuildContext ctx) {
     showModalBottomSheet(
         context: ctx,

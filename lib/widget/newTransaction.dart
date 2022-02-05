@@ -9,11 +9,17 @@ class NewTransactionWidget extends StatelessWidget {
     print('MediaQuery.of(context).viewInsets.bottom : ' +
         MediaQuery.of(context).viewInsets.bottom.toString());
     return Container(
-        child: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text('dd'),
-      ],
+        child: Form(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextFormField(
+            decoration: const InputDecoration(
+              hintText: 'Enter your email',
+            ),
+          )
+        ],
+      ),
     ));
   }
 }
