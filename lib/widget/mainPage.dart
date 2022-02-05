@@ -1,15 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:proj42/models/transactions.dart';
+import 'package:proj42/models/transactionsListData.dart';
 import 'package:proj42/widget/chart.dart';
 import 'package:proj42/widget/transactionsListWidget.dart';
 
-class mainPageWidget extends StatelessWidget {
+class mainPageWidget extends StatefulWidget {
   const mainPageWidget({Key? key}) : super(key: key);
+
+  @override
+  State<mainPageWidget> createState() => mainPageWidgetState();
+}
+
+class mainPageWidgetState extends State<mainPageWidget> {
+  void addNewTransaction(double amount, String name, DateTime date) {
+    setState(() {
+      transactionListData.transactionData.add(Transaction(name, amount, date));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height -
         MediaQuery.of(context).padding.vertical -
-        AppBar().preferredSize.height;
+        AppBar().preferredSize.height -
+        24;
     // print('all height : ' + height.toString());
     // print('padding top : ' + MediaQuery.of(context).padding.vertical.toString());
     // print('app bat height : ' + AppBar().preferredSize.height.toString());
@@ -25,7 +39,7 @@ class mainPageWidget extends StatelessWidget {
         Container(
           margin: EdgeInsets.zero,
           padding: EdgeInsets.zero,
-          height: height * 0.66,
+          height: height * 0.7,
           child: Card(elevation: 6, child: TransactionsListWidget()),
         ),
       ],

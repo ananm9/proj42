@@ -25,9 +25,12 @@ class _EmptyTransactionListImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      'assets/images/waiting.png',
-      fit: BoxFit.contain,
+    return Padding(
+      padding: const EdgeInsets.all(80.0),
+      child: Image.asset(
+        'assets/images/waiting.png',
+        fit: BoxFit.contain,
+      ),
     );
   }
 }
