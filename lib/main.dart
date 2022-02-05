@@ -1,25 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:proj42/widget/mainPage.dart';
+import 'package:proj42/widget/newTransaction.dart';
 
-void main() => runApp(RootWidget());
+void main() => runApp(MaterialApp(home: RootWidget()));
 
 class RootWidget extends StatelessWidget {
   const RootWidget({Key? key}) : super(key: key);
 
-  void addNewTansaction() {}
+  void addNewTansactionSheet(BuildContext ctx) {
+    showModalBottomSheet(
+        context: ctx,
+        builder: (_) {
+          return NewTransactionWidget();
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: SafeArea(
+    return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           actions: [
-            IconButton(onPressed: addNewTansaction, icon: Icon(Icons.add))
+            IconButton(
+                onPressed: () => addNewTansactionSheet(context),
+                icon: Icon(Icons.add))
           ],
         ),
         body: SafeArea(child: mainPageWidget()),
       ),
-    ));
+    );
   }
 }

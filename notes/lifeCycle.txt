@@ -1,0 +1,30 @@
+Stateless Widget Lifecycle:
+  Constructor function --> build()
+
+Stateful Widget Lifecycle:
+ + Constructor function --> initState() --> build() --> setState() 
+ + didUpdateWidget() --> build()
+ + dispose()
+
+App Lifecycle:
+ + inactive: app is inactive, no user input received
+ + paused: app not visible to user running,running in background
+ + resumed: app is again visible and responding to user input
+ + suspending: app is about to be suspended (exited)
+	Code:	
+   @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    super.initState();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    print(state);
+  }
+
+  @override
+  dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }

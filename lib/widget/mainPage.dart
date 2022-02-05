@@ -4,19 +4,13 @@ import 'package:proj42/models/transactionsListData.dart';
 import 'package:proj42/widget/chart.dart';
 import 'package:proj42/widget/transactionsListWidget.dart';
 
-class mainPageWidget extends StatefulWidget {
-  const mainPageWidget({Key? key}) : super(key: key);
-
-  @override
-  State<mainPageWidget> createState() => mainPageWidgetState();
-}
-
-class mainPageWidgetState extends State<mainPageWidget> {
-  void addNewTransaction(double amount, String name, DateTime date) {
-    setState(() {
-      transactionListData.transactionData.add(Transaction(name, amount, date));
-    });
-  }
+class mainPageWidget extends StatelessWidget {
+  // void addNewTransaction(double amount, String name, DateTime date) {
+  //   print('new Transaction with value : ' + name + '\t' + amount.toString());
+  //   setState(() {
+  //     transactionListData.transactionData.add(Transaction(name, amount, date));
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
