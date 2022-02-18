@@ -1,0 +1,101 @@
+https://pub.dev/packages/provider
+flutter pub add provider
+
+--> Define a Provider
+
+class CLASS_NAME with ChangeNotifier{
+
+	var  data;
+	
+	void DO_SOMETHING(){
+	data=3;
+	notifyListeners();
+
+}
+
+--> Register A Provider
+
+import 'package:provider/provider.dart'
+
+class WIDGET_NAME extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (ctx) => Products(),
+	child:ANY_WIDGET(),
+    );
+  }
+}
+  
+//Note: Use ChangeNotifierProvider.value if you have already created an instance of the ChangeNotifier class	
+//  return ChangeNotifierProvider(
+//	create: (ctx) => Products(),
+//  Will Be
+//  return ChangeNotifierProvider.value(
+//	 value: VARIABLE,
+//
+
+
+--> Get Provider Data
+
+// Provider
+
+import 'package:provider/provider.dart'
+
+class WIDGET_NAME extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+  final PROVIDER_OBJECT=Provider.of<CLASS_NAME>(context,true);
+    return ANY_WIDGET(
+      
+    );
+  }
+}
+
+
+// Consumer
+
+import 'package:provider/provider.dart'
+
+class WIDGET_NAME extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+ 
+    return Consumer<CLASS_NAME>(
+		builder:(ctx,object,child)=>ANY_WIDGET()
+		
+  }
+}
+
+
+//Note: Provider.of vs Consumer:
+Provider.of 
+	can be called in all the widgets lifecycle, including click handlers and didChangeDependencies
+	doesn't increase the indentation
+	applying provider, whole widget will rebuild if listen true.
+Consumer
+	allows more granular widgets rebuilds
+	solves most BuildContext misuse
+	using consumer only specifically allowed widget will rebuild.
+
+
+// MultiProvider
+
+import 'package:provider/provider.dart'
+
+class WIDGET_NAME extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+ 
+    return MultiProvider(
+	providers:[
+	ChangeNotifierProvider.value(
+	 value: VARIABLE ),
+	 ChangeNotifierProvider.value(
+	 value: VARIABLE2 ),
+	 ChangeNotifierProvider(
+      create: (ctx) => CLASS_NAME() )
+	],
+	  child: ANY_WIDGET	
+  }
+}
